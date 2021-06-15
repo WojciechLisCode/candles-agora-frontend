@@ -13,7 +13,6 @@ export default function Navbar() {
         <NavLink to="/users">*Users*</NavLink>
         <span>LOGO</span>
         <NavLink to="/user/2">*My account*</NavLink>
-        {console.log(meUser)}
         {meUser.name === null ? (
           <NavLink to="/login">*Login/Signup*</NavLink>
         ) : (
