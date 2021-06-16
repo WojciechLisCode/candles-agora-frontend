@@ -7,9 +7,12 @@ export const fetchCandlesSuccess = (candlesArray) => ({
   payload: candlesArray,
 });
 
-export const fetchAllCandles = () => {
+export const fetchAllCandles = (searchInput) => {
   return async (dispatch, getState) => {
-    const response = await axios.get(`${apiUrl}/candles`);
+    console.log(searchInput);
+    const response = await axios.get(
+      `${apiUrl}/candles?searchInput=${searchInput}`
+    );
     dispatch(fetchCandlesSuccess(response.data.candles.rows));
   };
 };
