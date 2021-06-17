@@ -3,7 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect, useState } from "react";
 
 import { selectAllCandles } from "../store/selectors/allCandles";
+import { selectMeUser } from "../store/selectors/meUser";
 import { fetchAllCandles } from "../store/actions/allCandles";
+
+import CandleCard from "../components/CandleCard";
+import NewCandleForm from "../components/NewCandleForm";
 
 export default function Candles() {
   const dispatch = useDispatch();
@@ -11,8 +15,8 @@ export default function Candles() {
   const [searchInput, setSearchInput] = useState("");
   const [sortingMethod, setSortingMethod] = useState("alphebetical ▲");
   const allCandles = useSelector(selectAllCandles);
+  const meUser = useSelector(selectMeUser);
 
-  console.log(sortingMethod);
   useEffect(() => {
     dispatch(fetchAllCandles(searchInput));
   }, [dispatch, searchInput]);
@@ -55,11 +59,11 @@ export default function Candles() {
     });
   } else if (allCandles !== null && sortingMethod === "I had that candle ▲") {
     allCandles.sort(function (a, b) {
-      return a.had.length - b.have.length;
+      return a.had.length - b.had.length;
     });
   } else if (allCandles !== null && sortingMethod === "I had that candle ▼") {
     allCandles.sort(function (a, b) {
-      return b.had.length - a.have.length;
+      return b.had.length - a.had.length;
     });
   } else if (allCandles !== null && sortingMethod === "I can let it go ▲") {
     allCandles.sort(function (a, b) {
@@ -105,12 +109,26 @@ export default function Candles() {
       {allCandles === null ? (
         <div>Loading</div>
       ) : (
-        <h2>
-          {console.log(allCandles)}
+        <div>
+          <div>{meUser.isAdmin ? <NewCandleForm /> : ""}</div>
           {allCandles.map((candle) => {
-            return <p>Candle:{candle.name}</p>;
+            return (
+              <div key={candle.id}>
+                <Link to={`/candle/${candle.id}`}>
+                  <CandleCard
+                    name={candle.name}
+                    imageUrl={candle.imageUrl}
+                    description={candle.description}
+                    wants={candle.wants.length}
+                    have={candle.have.length}
+                    had={candle.had.length}
+                    dontNeed={candle.dontNeed.length}
+                  />
+                </Link>
+              </div>
+            );
           })}
-        </h2>
+        </div>
       )}
     </div>
   );

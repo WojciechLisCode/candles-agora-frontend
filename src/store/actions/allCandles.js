@@ -16,3 +16,16 @@ export const fetchAllCandles = (searchInput) => {
     dispatch(fetchCandlesSuccess(response.data.candles.rows));
   };
 };
+
+export const addNewCandle = (candleName, candleDescription, candleImageUrl) => {
+  return async (dispatch, getState) => {
+    console.log(
+      "name:",
+      candleName,
+      "desc:",
+      candleDescription,
+      "image:",
+      candleImageUrl
+    );
+  };
+};
