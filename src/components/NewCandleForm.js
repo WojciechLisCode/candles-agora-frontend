@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { addNewCandle } from "../store/actions/allCandles";
 
 export default function NewCandleForm(props) {
   const dispatch = useDispatch();
-
+  const history = useHistory();
   const [candleName, setCandleName] = useState("");
+
   const [candleDescription, setCandleDescription] = useState("");
   const [candleImageUrl, setCandleImageUrl] = useState("");
 
@@ -16,6 +17,8 @@ export default function NewCandleForm(props) {
     setCandleName("");
     setCandleDescription("");
     setCandleImageUrl("");
+
+    history.push(`/ncl`);
   }
 
   return (
@@ -38,7 +41,7 @@ export default function NewCandleForm(props) {
               type="text"
               value={candleName}
               onChange={(e) => {
-                setCandleName(e.target.value);
+                setCandleName(e.target.value.toUpperCase());
               }}
             />
           </div>
