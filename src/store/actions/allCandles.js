@@ -1,4 +1,5 @@
 import axios from "axios";
+import { newCandleIdUpdate } from "../actions/meUser";
 
 const apiUrl = process.env.API_URL || "http://localhost:4000";
 
@@ -9,10 +10,21 @@ export const fetchCandlesSuccess = (candlesArray) => ({
 
 export const fetchAllCandles = (searchInput) => {
   return async (dispatch, getState) => {
-    console.log(searchInput);
     const response = await axios.get(
       `${apiUrl}/candles?searchInput=${searchInput}`
     );
     dispatch(fetchCandlesSuccess(response.data.candles.rows));
+  };
+};
+
+export const addNewCandle = (candleName, candleDescription, candleImageUrl) => {
+  return async (dispatch, getState) => {
+    let response = await axios.post(`${apiUrl}/candles/newCandle`, {
+      candleName,
+      candleDescription,
+      candleImageUrl,
+    });
+
+    dispatch(newCandleIdUpdate(response.data.newCandleId));
   };
 };

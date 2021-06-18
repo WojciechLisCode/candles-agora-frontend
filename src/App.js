@@ -7,6 +7,7 @@ import UserDetails from "./pages/UserDetails";
 import CandleDetails from "./pages/CandleDetails";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import NewCandleLoader from "./pages/NewCandleLoader";
 
 import { Switch, Route } from "react-router-dom";
 
@@ -19,6 +20,7 @@ function App() {
         <Route path="/users" component={Users} />
         <Route path="/user/:id" component={UserDetails} />
         <Route path="/candle/:id" component={CandleDetails} />
+        <Route path="/ncl" component={NewCandleLoader} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
       </Switch>
