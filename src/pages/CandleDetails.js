@@ -6,6 +6,9 @@ import { Link } from "react-router-dom";
 import { fetchCandleById } from "../store/actions/candleDetails";
 import { selectCandleDetails } from "../store/selectors/candleDetails";
 
+import NewConnectionForm from "../components/NewConnectionForm";
+import { selectMeUser } from "../store/selectors/meUser";
+
 export default function CandleDetails() {
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -13,6 +16,7 @@ export default function CandleDetails() {
   const [connectionsSorting, setConnectionsSorting] =
     useState("I want that candle");
   const candleDetails = useSelector(selectCandleDetails);
+  const meUser = useSelector(selectMeUser);
   let connectionsList = [];
 
   useEffect(() => {
@@ -66,7 +70,7 @@ export default function CandleDetails() {
               <option>I can let it go</option>
             </select>
             {connectionsList.map((connection) => {
-              console.log(connection);
+              console.log(meUser);
               return (
                 <div>
                   <Link to={`/user/${connection.id}`}>
@@ -86,7 +90,9 @@ export default function CandleDetails() {
             })}
           </div>
 
-          <div>add new relation</div>
+          <div>
+            <NewConnectionForm candleId={candleDetails.id} userId={meUser.id} />
+          </div>
         </div>
       </div>
     );

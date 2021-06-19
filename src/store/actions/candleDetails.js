@@ -13,3 +13,42 @@ export const fetchCandleById = (id) => {
     dispatch(fetchCandleSuccess(response.data.candleDetails));
   };
 };
+
+export const addNewConnection = (
+  connectionType,
+  connectionText,
+  candleId,
+  userId
+) => {
+  console.log(
+    " type: ",
+    connectionType,
+    " text: ",
+    connectionText,
+    " candle: ",
+    candleId,
+    " user ",
+    userId
+  );
+  return async (dispatch, getState) => {
+    const response = await axios.post(`${apiUrl}/candles/newConnection`, {
+      connectionType,
+      connectionText,
+      candleId,
+      userId,
+    });
+    console.log(response);
+  };
+};
+
+// export const addNewCandle = (candleName, candleDescription, candleImageUrl) => {
+//   return async (dispatch, getState) => {
+//     let response = await axios.post(`${apiUrl}/candles/newCandle`, {
+//       candleName,
+//       candleDescription,
+//       candleImageUrl,
+//     });
+
+//     dispatch(newCandleIdUpdate(response.data.newCandleId));
+//   };
+// };
