@@ -2,15 +2,16 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addNewConnection } from "../store/actions/candleDetails";
+import { fetchCandleById } from "../store/actions/candleDetails";
 
 export default function NewConnectionForm(props) {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const [connectionType, setConnectionType] = useState("I want that candle");
+  const [connectionType, setConnectionType] = useState("iWantCandle");
   const [connectionText, setConnectionText] = useState("");
 
-  function submitNewCandle(event) {
+  function submitNewConnection(event) {
     event.preventDefault();
     console.log("type: ", connectionType, " text: ", connectionText);
     dispatch(
@@ -21,17 +22,25 @@ export default function NewConnectionForm(props) {
         props.userId
       )
     );
-    setConnectionType("I want that candle");
+    setConnectionType("iWantCandle");
     setConnectionText("");
-
-    // history.push(`/ncl`);
+    props.setConnectionsSorting(
+      connectionType === "iHaveCandle"
+        ? "I have that candle"
+        : connectionType === "iWantCandle"
+        ? "I want that candle"
+        : connectionType === "iDidHaveCandle"
+        ? "I had that candle"
+        : "I can let it go"
+    );
+    props.setMessage("Your connection was added");
   }
 
   return (
     <div>
       <div>
         <h2>Add your connection:</h2>
-        <form on onSubmit={submitNewCandle}>
+        <form on onSubmit={submitNewConnection}>
           <div>
             <select
               value={connectionType}
@@ -39,10 +48,10 @@ export default function NewConnectionForm(props) {
                 setConnectionType(e.target.value);
               }}
             >
-              <option>I want that candle</option>
-              <option>I have that candle</option>
-              <option>I had that candle </option>
-              <option>I can let it go</option>
+              <option value="iWantCandle">I want that candle</option>
+              <option value="iHaveCandle">I have that candle</option>
+              <option value="iDidHaveCandle">I had that candle </option>
+              <option value="iCanSellCandle">I can let it go</option>
             </select>
           </div>{" "}
           <div>

@@ -8,8 +8,10 @@ export const fetchCandleSuccess = (candleDetails) => ({
 });
 
 export const fetchCandleById = (id) => {
+  console.log("fetching: ", id);
   return async (dispatch, getState) => {
     const response = await axios.get(`${apiUrl}/candles/${id}`);
+    console.log(response.data);
     dispatch(fetchCandleSuccess(response.data.candleDetails));
   };
 };
@@ -20,24 +22,17 @@ export const addNewConnection = (
   candleId,
   userId
 ) => {
-  console.log(
-    " type: ",
-    connectionType,
-    " text: ",
-    connectionText,
-    " candle: ",
-    candleId,
-    " user ",
-    userId
-  );
   return async (dispatch, getState) => {
-    const response = await axios.post(`${apiUrl}/candles/newConnection`, {
-      connectionType,
-      connectionText,
-      candleId,
-      userId,
-    });
+    const response = await axios.post(
+      `${apiUrl}/candles/newConnection/${connectionType}`,
+      {
+        connectionText,
+        candleId,
+        userId,
+      }
+    );
     console.log(response);
+    dispatch(fetchCandleById(candleId));
   };
 };
 

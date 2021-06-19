@@ -12,6 +12,7 @@ import { selectMeUser } from "../store/selectors/meUser";
 export default function CandleDetails() {
   const { id } = useParams();
   const dispatch = useDispatch();
+  const [message, setMessage] = useState("");
 
   const [connectionsSorting, setConnectionsSorting] =
     useState("I want that candle");
@@ -21,7 +22,7 @@ export default function CandleDetails() {
 
   useEffect(() => {
     dispatch(fetchCandleById(id));
-  }, [dispatch, id]);
+  }, [dispatch, id, message, connectionsSorting]);
 
   console.log(connectionsSorting);
 
@@ -91,7 +92,13 @@ export default function CandleDetails() {
           </div>
 
           <div>
-            <NewConnectionForm candleId={candleDetails.id} userId={meUser.id} />
+            <p>{message}</p>
+            <NewConnectionForm
+              candleId={candleDetails.id}
+              userId={meUser.id}
+              setMessage={setMessage}
+              setConnectionsSorting={setConnectionsSorting}
+            />
           </div>
         </div>
       </div>
