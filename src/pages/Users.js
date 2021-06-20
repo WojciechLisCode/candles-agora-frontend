@@ -8,6 +8,7 @@ import { fetchAllUsers } from "../store/actions/allUsers";
 
 import CandleCard from "../components/CandleCard";
 import NewCandleForm from "../components/NewCandleForm";
+import UserCard from "../components/UserCard";
 
 export default function Users() {
   const dispatch = useDispatch();
@@ -110,19 +111,19 @@ export default function Users() {
         <div>Loading</div>
       ) : (
         <div>
-          <div>{meUser.isAdmin ? <NewCandleForm /> : ""}</div>
-          {allUsers.map((candle) => {
+          <div>{meUser.isAdmin ? "admin" : ""}</div>
+          {allUsers.map((user) => {
             return (
-              <div key={candle.id}>
-                <Link to={`/candle/${candle.id}`}>
-                  <CandleCard
-                    name={candle.name}
-                    imageUrl={candle.imageUrl}
-                    description={candle.description}
-                    wants={candle.wants.length}
-                    have={candle.have.length}
-                    had={candle.had.length}
-                    dontNeed={candle.dontNeed.length}
+              <div key={user.id}>
+                <Link to={`/user/${user.id}`}>
+                  <UserCard
+                    isAdmin={user.isAdmin}
+                    isBlocked={user.isBlocked}
+                    name={user.name}
+                    wants={user.wants.length}
+                    have={user.have.length}
+                    had={user.had.length}
+                    dontNeed={user.dontNeed.length}
                   />
                 </Link>
               </div>
