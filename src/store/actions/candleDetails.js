@@ -8,10 +8,8 @@ export const fetchCandleSuccess = (candleDetails) => ({
 });
 
 export const fetchCandleById = (id) => {
-  console.log("fetching: ", id);
   return async (dispatch, getState) => {
     const response = await axios.get(`${apiUrl}/candles/${id}`);
-    console.log(response.data);
     dispatch(fetchCandleSuccess(response.data.candleDetails));
   };
 };
@@ -35,15 +33,3 @@ export const addNewConnection = (
     dispatch(fetchCandleById(candleId));
   };
 };
-
-// export const addNewCandle = (candleName, candleDescription, candleImageUrl) => {
-//   return async (dispatch, getState) => {
-//     let response = await axios.post(`${apiUrl}/candles/newCandle`, {
-//       candleName,
-//       candleDescription,
-//       candleImageUrl,
-//     });
-
-//     dispatch(newCandleIdUpdate(response.data.newCandleId));
-//   };
-// };
