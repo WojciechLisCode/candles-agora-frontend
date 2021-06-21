@@ -4,7 +4,9 @@ import React, { useEffect, useState } from "react";
 
 import { selectAllCandles } from "../store/selectors/allCandles";
 import { selectMeUser } from "../store/selectors/meUser";
+
 import { fetchAllCandles } from "../store/actions/allCandles";
+import { newCandleIdToZero } from "../store/actions/meUser";
 
 import CandleCard from "../components/CandleCard";
 import NewCandleForm from "../components/NewCandleForm";
@@ -20,6 +22,10 @@ export default function Candles() {
   useEffect(() => {
     dispatch(fetchAllCandles(searchInput));
   }, [dispatch, searchInput]);
+
+  useEffect(() => {
+    dispatch(newCandleIdToZero());
+  }, [dispatch]);
 
   if (allCandles !== null && sortingMethod === "alphebetical ▲") {
     allCandles.sort(function (a, b) {
