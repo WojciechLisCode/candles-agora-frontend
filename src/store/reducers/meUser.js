@@ -10,9 +10,10 @@ const initialState = {
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
+    case "meUser/fetchFromValidToken":
+      return { ...state, ...action.payload };
     case "meUser/logOut":
       localStorage.removeItem("token");
-      console.log("oko");
       return { ...initialState, token: null };
     case "meUser/loginSuccess":
       localStorage.setItem("token", action.payload.token);
