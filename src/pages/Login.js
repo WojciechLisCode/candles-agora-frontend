@@ -52,6 +52,12 @@ export default function Login() {
         </p>
         <button type="submit">Login</button>
       </form>
+      <div>
+        <p>or</p>
+        <p>
+          <Link to="/signup">Create new user</Link>
+        </p>
+      </div>
     </div>
   );
 }

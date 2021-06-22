@@ -1,3 +1,5 @@
+import "../styles/candles.css";
+
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect, useState } from "react";
@@ -81,9 +83,9 @@ export default function Candles() {
     });
   }
   return (
-    <div>
-      <div>
-        <h3>search:</h3>
+    <div className="Candles">
+      <div className="searchAndSort">
+        <p className="searchTitle">Search by name</p>
         <input
           type="text"
           value={searchInput}

@@ -1,5 +1,7 @@
+import "../styles/navbar.css";
+
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import { logOut } from "../store/actions/meUser";
@@ -9,25 +11,35 @@ export default function Navbar() {
   const meUser = useSelector(selectMeUser);
   const dispatch = useDispatch();
   return (
-    <div>
-      <div>
-        <NavLink to="/">*Candles*</NavLink>
-        <NavLink to="/users">*Users*</NavLink>
-        <span>LOGO</span>
-        <NavLink to="/user/2">*My account*</NavLink>
+    <div className="Navbar">
+      <div className="links">
+        <Link className="linksItem" to="/">
+          <p>Candles</p>
+        </Link>
+        <Link className="linksItem" to="/users">
+          <p>Users</p>
+        </Link>
+        <div className="logoAndSelector">
+          <span className="logo">CANDLES AGORA</span>
+          <div className="langSel">
+            <p className="langSelTitle">Choose language:</p>
+            <select>
+              <option value="English">English</option>
+            </select>
+          </div>
+        </div>
+        <Link className="linksItem" to="/user/2">
+          <p>My account</p>
+        </Link>
         {meUser.token === null ? (
-          <NavLink to="/login">*Login/Signup*</NavLink>
+          <Link className="linksItem" to="/login">
+            <p>Login/Signup</p>
+          </Link>
         ) : (
-          <NavLink onClick={() => dispatch(logOut())} to="/">
-            *Logout*
-          </NavLink>
+          <Link className="linksItem" onClick={() => dispatch(logOut())} to="/">
+            <p>Logout</p>
+          </Link>
         )}
-      </div>
-      <div>
-        <p>Choose language:</p>
-        <select>
-          <option value="English">English</option>
-        </select>
       </div>
     </div>
   );

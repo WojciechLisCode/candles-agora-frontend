@@ -1,0 +1,11 @@
+.Candles {
+  display: flex;
+  flex-direction: column;
+}
+.searchAndSort {
+  position: sticky;
+  top: 100px;
+}
+.searchTitle {
+  margin: 3px;
+}
