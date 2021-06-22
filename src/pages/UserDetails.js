@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 import { fetchUserById } from "../store/actions/userDetails";
+import { sendMessage } from "../store/actions/allUsers";
 import { selectUserDetails } from "../store/selectors/userDetails";
 import { selectMeUser } from "../store/selectors/meUser";
 
@@ -13,6 +14,9 @@ export default function UserDetails() {
   const { id } = useParams();
   const dispatch = useDispatch();
 
+  const [messageText, setMessageText] = useState("");
+  const [confirmationText, setConfirmationText] = useState("");
+  const [messageFormDisplay, setMessageFormDisplay] = useState(false);
   const [connectionsSorting, setConnectionsSorting] =
     useState("I want that candle");
   const userDetails = useSelector(selectUserDetails);
@@ -23,7 +27,14 @@ export default function UserDetails() {
     dispatch(fetchUserById(id));
   }, [dispatch, id, connectionsSorting]);
 
-  console.log(connectionsSorting);
+  function messageFormSubmit(event) {
+    event.preventDefault();
+    dispatch(
+      sendMessage(messageText, meUser.name, meUser.id, userDetails.email)
+    );
+    setMessageFormDisplay(!messageFormDisplay);
+    setConfirmationText(`Message was sent to ${userDetails.name}`);
+  }
 
   if (connectionsSorting === "I want that candle" && userDetails !== null) {
     connectionsList = userDetails.wants;
@@ -52,7 +63,36 @@ export default function UserDetails() {
           <p>{userDetails.isBlocked ? "BLOCKED!!" : " "}</p>
         </div>
         <div>
-          <button>Send a message</button>
+          {meUser.token !== null && meUser.id !== userDetails.id ? (
+            <button
+              onClick={() => {
+                setMessageFormDisplay(!messageFormDisplay);
+                setConfirmationText("");
+              }}
+            >
+              ▼ Message ▼
+            </button>
+          ) : (
+            " "
+          )}
+          {messageFormDisplay ? (
+            <form onSubmit={messageFormSubmit}>
+              <div>
+                <textarea
+                  value={messageText}
+                  onChange={(e) => {
+                    setMessageText(e.target.value);
+                  }}
+                ></textarea>
+              </div>
+              {messageText ? <button type="submit">Send</button> : ""}
+            </form>
+          ) : (
+            ""
+          )}
+          <div>
+            <p>{confirmationText}</p>
+          </div>
         </div>
         <div>
           <h3>My candles:</h3>

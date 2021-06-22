@@ -9,9 +9,19 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import NewCandleLoader from "./pages/NewCandleLoader";
 
+import { getUserWithStoredToken } from "./store/actions/meUser";
+
 import { Switch, Route } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getUserWithStoredToken());
+  }, [dispatch]);
+
   return (
     <div className="App">
       <Navbar />

@@ -16,3 +16,15 @@ export const fetchAllUsers = (searchInput) => {
     dispatch(fetchUsersSuccess(response.data.users.rows));
   };
 };
+
+export const sendMessage = (message, senderName, senderId, reciverMail) => {
+  console.log(senderName);
+  return async (dispatch, getState) => {
+    await axios.post(`${apiUrl}/users/send`, {
+      message,
+      senderName,
+      senderId,
+      reciverMail,
+    });
+  };
+};
