@@ -1,0 +1,37 @@
+.Navbar {
+  background-color: wheat;
+  height: 90px;
+  display: flex;
+  flex-direction: column;
+  border: 2px black solid;
+  margin: 5px;
+  justify-content: center;
+  min-width: 900px;
+  position: sticky;
+  top: 0;
+}
+.langSel {
+  margin: 10px;
+}
+.langSelTitle {
+  margin: 1px;
+}
+.links {
+  display: flex;
+  justify-content: space-evenly;
+}
+.linksItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 20%;
+  min-width: 160px;
+  font-size: 25px;
+}
+.logoAndSelector {
+  min-width: 250px;
+}
+.logo {
+  font-size: 30px;
+}
