@@ -1,11 +1,35 @@
 .Candles {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  background: linear-gradient(
+    to right,
+    #bf953f,
+    #fcf6ba,
+    #b38728,
+    #fbf5b7,
+    #aa771c
+  );
 }
 .searchAndSort {
+  color: #fbf5b7;
   position: sticky;
-  top: 100px;
+  top: 90px;
+  width: 100%;
+  padding: 5px 0 5px 0;
+  background-color: black;
 }
-.searchTitle {
-  margin: 3px;
+.componentContainer {
+  margin: 10px;
+  min-width: 750px;
+  display: flex;
+}
+.candlesList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.sortingInput {
+  margin-left: 10px;
+  margin-right: 10px;
 }

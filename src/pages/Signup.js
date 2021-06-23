@@ -1,15 +1,26 @@
+import "../styles/signup.css";
+
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 
 import { signup } from "../store/actions/meUser";
+import { selectToken } from "../store/selectors/meUser";
 
 export default function Signup() {
   const dispatch = useDispatch();
+  const token = useSelector(selectToken);
+  const history = useHistory();
 
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
+
+  useEffect(() => {
+    if (token !== null) {
+      history.push("/");
+    }
+  }, [token, history]);
 
   function submitForm(event) {
     event.preventDefault();
@@ -18,40 +29,46 @@ export default function Signup() {
   }
 
   return (
-    <div>
-      <h2>Signup</h2>
+    <div className="Signup">
+      <div className="buttonsBar"></div>
+      <h2>Signup page</h2>
       <form onSubmit={submitForm}>
-        <p>
-          name:
+        <div className="input">
+          <p className="inputDesc">Name:</p>
           <input
+            className="inputField"
             type="text"
             value={name}
             onChange={(e) => {
               setName(e.target.value);
             }}
           ></input>
-        </p>
-        <p>
-          email:
+        </div>
+        <div className="input">
+          <p className="inputDesc">Email:</p>
           <input
+            className="inputField"
             type="text"
             value={email}
             onChange={(e) => {
               setEmail(e.target.value);
             }}
           ></input>
-        </p>
-        <p>
-          Password:
+        </div>
+        <div className="input">
+          <p className="inputDesc">Password:</p>
           <input
+            className="inputField"
             type="passord"
             value={password}
             onChange={(e) => {
               setPassword(e.target.value);
             }}
           ></input>
-        </p>
-        <button type="submit">Sign up!</button>
+        </div>
+        <button className="userButton" type="submit">
+          Sign up!
+        </button>
       </form>
     </div>
   );

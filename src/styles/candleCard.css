@@ -1,0 +1,22 @@
+.CandleCard {
+  display: flex;
+  flex-direction: column;
+  border: 5px black solid;
+  width: 350px;
+  height: 260px;
+  margin: 50px;
+  justify-content: space-between;
+}
+.imageAndName {
+  display: flex;
+}
+.image {
+  margin: 5px;
+  border: 5px black solid;
+  flex: 1;
+  min-width: 175px;
+  min-height: 175px;
+}
+.candleNumbers {
+  flex: 1;
+}

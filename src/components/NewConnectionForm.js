@@ -1,3 +1,5 @@
+import "../styles/newConnectionForm.css";
+
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -37,39 +39,38 @@ export default function NewConnectionForm(props) {
   }
 
   return (
-    <div>
-      <div>
-        <h2>Add your connection:</h2>
-        <form on onSubmit={submitNewConnection}>
-          <div>
-            <select
-              value={connectionType}
-              onChange={(e) => {
-                setConnectionType(e.target.value);
-              }}
-            >
-              <option value="iWantCandle">I want that candle</option>
-              <option value="iHaveCandle">I have that candle</option>
-              <option value="iDidHaveCandle">I had that candle </option>
-              <option value="iCanSellCandle">I can let it go</option>
-            </select>
-          </div>{" "}
-          <div>
-            <p>description:</p>
-            <textarea
-              value={connectionText}
-              onChange={(e) => {
-                setConnectionText(e.target.value);
-              }}
-            />
-          </div>
-          {connectionType !== "" && connectionText !== "" ? (
-            <button type="submit">Add it!</button>
-          ) : (
-            ""
-          )}
-        </form>
-      </div>
+    <div className="NewConnectionForm">
+      <p>Add your relation</p>
+      <form on onSubmit={submitNewConnection}>
+        <div>
+          <select
+            value={connectionType}
+            onChange={(e) => {
+              setConnectionType(e.target.value);
+            }}
+          >
+            <option value="iWantCandle">I want that candle</option>
+            <option value="iHaveCandle">I have that candle</option>
+            <option value="iDidHaveCandle">I had that candle </option>
+            <option value="iCanSellCandle">I can let it go</option>
+          </select>
+        </div>{" "}
+        <div>
+          <textarea
+            value={connectionText}
+            onChange={(e) => {
+              setConnectionText(e.target.value);
+            }}
+          />
+        </div>
+        {connectionType !== "" && connectionText !== "" ? (
+          <button className="userButton" type="submit">
+            Add it!
+          </button>
+        ) : (
+          ""
+        )}
+      </form>
     </div>
   );
 }

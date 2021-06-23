@@ -85,58 +85,61 @@ export default function Candles() {
   return (
     <div className="Candles">
       <div className="searchAndSort">
-        <p className="searchTitle">Search by name</p>
+        Search by name:
         <input
+          className="sortingInput"
           type="text"
           value={searchInput}
           onChange={(e) => {
             setSearchInput(e.target.value.toUpperCase());
           }}
         ></input>
-        <div>
-          Sort by:
-          <select
-            value={sortingMethod}
-            onChange={(e) => {
-              setSortingMethod(e.target.value);
-            }}
-          >
-            <option>alphebetical ▲</option>
-            <option>alphebetical ▼</option>
-            <option>I want that candle ▲</option>
-            <option>I want that candle ▼</option>
-            <option>I have that candle ▲</option>
-            <option>I have that candle ▼</option>
-            <option>I had that candle ▲</option>
-            <option>I had that candle ▼</option>
-            <option>I can let it go ▲</option>
-            <option>I can let it go ▼</option>
-          </select>
-        </div>
+        Sort by:
+        <select
+          className="sortingInput"
+          value={sortingMethod}
+          onChange={(e) => {
+            setSortingMethod(e.target.value);
+          }}
+        >
+          <option>alphebetical ▲</option>
+          <option>alphebetical ▼</option>
+          <option>I want that candle ▲</option>
+          <option>I want that candle ▼</option>
+          <option>I have that candle ▲</option>
+          <option>I have that candle ▼</option>
+          <option>I had that candle ▲</option>
+          <option>I had that candle ▼</option>
+          <option>I can let it go ▲</option>
+          <option>I can let it go ▼</option>
+        </select>
       </div>
       {allCandles === null ? (
         <div>Loading</div>
       ) : (
-        <div>
-          <div>{meUser.isAdmin ? <NewCandleForm /> : ""}</div>
-          {allCandles.map((candle) => {
-            return (
-              <div key={candle.id}>
-                <Link to={`/candle/${candle.id}`}>
-                  <CandleCard
-                    name={candle.name}
-                    imageUrl={candle.imageUrl}
-                    description={candle.description}
-                    wants={candle.wants.length}
-                    have={candle.have.length}
-                    had={candle.had.length}
-                    dontNeed={candle.dontNeed.length}
-                  />
-                </Link>
-              </div>
-            );
-          })}
-        </div>
+        <>
+          <div className="componentContainer">
+            {meUser.isAdmin ? <NewCandleForm /> : ""}
+          </div>
+          <div className="candlesList">
+            {allCandles.map((candle) => {
+              return (
+                <div key={candle.id}>
+                  <Link to={`/candle/${candle.id}`}>
+                    <CandleCard
+                      name={candle.name}
+                      imageUrl={candle.imageUrl}
+                      wants={candle.wants.length}
+                      have={candle.have.length}
+                      had={candle.had.length}
+                      dontNeed={candle.dontNeed.length}
+                    />
+                  </Link>
+                </div>
+              );
+            })}
+          </div>
+        </>
       )}
     </div>
   );

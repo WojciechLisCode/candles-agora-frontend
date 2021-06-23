@@ -1,3 +1,5 @@
+import "../styles/userDetails.css";
+
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -56,79 +58,99 @@ export default function UserDetails() {
   console.log(connectionsList);
   if (userDetails !== null) {
     return (
-      <div>
-        <div>
+      <div className="UserDetails">
+        {meUser.isAdmin && meUser.id !== userDetails.id ? (
+          <div className="buttonsBar">
+            <button className="userButton">Toggle "Admin" status</button>
+            <button className="userButton">Toggle "Blocked" status</button>
+          </div>
+        ) : (
+          <div className="buttonsBar"></div>
+        )}
+        <div className="userData">
           <h1>{userDetails.name}</h1>
-          <p>{userDetails.isAdmin ? "admin" : " "}</p>
+          <p className="userDetailsStatus">
+            {userDetails.isAdmin ? "Admin" : " "}
+          </p>
           <p>{userDetails.isBlocked ? "BLOCKED!!" : " "}</p>
-        </div>
-        <div>
-          {meUser.token !== null && meUser.id !== userDetails.id ? (
-            <button
-              onClick={() => {
-                setMessageFormDisplay(!messageFormDisplay);
-                setConfirmationText("");
+
+          <div>
+            {meUser.token !== null && meUser.id !== userDetails.id ? (
+              <button
+                className="userButton"
+                onClick={() => {
+                  setMessageFormDisplay(!messageFormDisplay);
+                  setConfirmationText("");
+                }}
+              >
+                ▼ Message ▼
+              </button>
+            ) : (
+              " "
+            )}
+            {messageFormDisplay && meUser.id !== userDetails.id ? (
+              <form onSubmit={messageFormSubmit}>
+                <div>
+                  <textarea
+                    className="messageTextArea"
+                    value={messageText}
+                    onChange={(e) => {
+                      setMessageText(e.target.value);
+                    }}
+                  ></textarea>
+                </div>
+                {messageText ? (
+                  <button className="userButton" type="submit">
+                    Send
+                  </button>
+                ) : (
+                  ""
+                )}
+              </form>
+            ) : (
+              ""
+            )}
+            <div>
+              <p>{confirmationText}</p>
+            </div>
+          </div>
+          <div>
+            <h3>My relations:</h3>
+            <select
+              value={connectionsSorting}
+              onChange={(e) => {
+                setConnectionsSorting(e.target.value);
               }}
             >
-              ▼ Message ▼
-            </button>
-          ) : (
-            " "
-          )}
-          {messageFormDisplay ? (
-            <form onSubmit={messageFormSubmit}>
-              <div>
-                <textarea
-                  value={messageText}
-                  onChange={(e) => {
-                    setMessageText(e.target.value);
-                  }}
-                ></textarea>
-              </div>
-              {messageText ? <button type="submit">Send</button> : ""}
-            </form>
-          ) : (
-            ""
-          )}
-          <div>
-            <p>{confirmationText}</p>
+              <option>I want that candle</option>
+              <option>I have that candle</option>
+              <option>I had that candle </option>
+              <option>I can let it go</option>
+            </select>
           </div>
         </div>
-        <div>
-          <h3>My candles:</h3>
-          <select
-            value={connectionsSorting}
-            onChange={(e) => {
-              setConnectionsSorting(e.target.value);
-            }}
-          >
-            <option>I want that candle</option>
-            <option>I have that candle</option>
-            <option>I had that candle </option>
-            <option>I can let it go</option>
-          </select>
+        <div className="userConnectionsList">
+          {connectionsList.map((connection) => {
+            return (
+              <div key={connection.id}>
+                <UserConnectionCard
+                  name={connection.name}
+                  text={
+                    connectionsSorting === "I want that candle"
+                      ? connection.iWantCandle.connectionText
+                      : connectionsSorting === "I have that candle"
+                      ? connection.iHaveCandle.connectionText
+                      : connectionsSorting === "I had that candle"
+                      ? connection.iDidHaveCandle.connectionText
+                      : connection.iCanSellCandle.connectionText
+                  }
+                  candleId={connection.id}
+                  imageUrl={connection.imageUrl}
+                />
+              </div>
+            );
+          })}
         </div>
-
-        {connectionsList.map((connection) => {
-          return (
-            <div key={connection.id}>
-              <UserConnectionCard
-                name={connection.name}
-                text={
-                  connectionsSorting === "I want that candle"
-                    ? connection.iWantCandle.connectionText
-                    : connectionsSorting === "I have that candle"
-                    ? connection.iHaveCandle.connectionText
-                    : connectionsSorting === "I had that candle"
-                    ? connection.iDidHaveCandle.connectionText
-                    : connection.iCanSellCandle.connectionText
-                }
-                candleId={connection.id}
-                imageUrl={connection.imageUrl}
-              />
-            </div>
-          );
-        })}
       </div>
     );
   } else {

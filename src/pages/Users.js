@@ -1,3 +1,5 @@
+import "../styles/users.css";
+
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect, useState } from "react";
@@ -76,45 +78,44 @@ export default function Users() {
     });
   }
   return (
-    <div>
-      <div>
-        <h3>search:</h3>
+    <div className="Users">
+      <div className="searchAndSort">
+        Search by name:
         <input
+          className="sortingInput"
           type="text"
           value={searchInput}
           onChange={(e) => {
             setSearchInput(e.target.value.toUpperCase());
           }}
         ></input>
-        <div>
-          Sort by:
-          <select
-            value={sortingMethod}
-            onChange={(e) => {
-              setSortingMethod(e.target.value);
-            }}
-          >
-            <option>alphebetical ▲</option>
-            <option>alphebetical ▼</option>
-            <option>I want that candle ▲</option>
-            <option>I want that candle ▼</option>
-            <option>I have that candle ▲</option>
-            <option>I have that candle ▼</option>
-            <option>I had that candle ▲</option>
-            <option>I had that candle ▼</option>
-            <option>I can let it go ▲</option>
-            <option>I can let it go ▼</option>
-          </select>
-        </div>
+        Sort by:
+        <select
+          className="sortingInput"
+          value={sortingMethod}
+          onChange={(e) => {
+            setSortingMethod(e.target.value);
+          }}
+        >
+          <option>alphebetical ▲</option>
+          <option>alphebetical ▼</option>
+          <option>I want that candle ▲</option>
+          <option>I want that candle ▼</option>
+          <option>I have that candle ▲</option>
+          <option>I have that candle ▼</option>
+          <option>I had that candle ▲</option>
+          <option>I had that candle ▼</option>
+          <option>I can let it go ▲</option>
+          <option>I can let it go ▼</option>
+        </select>
       </div>
       {allUsers === null ? (
         <div>Loading</div>
       ) : (
-        <div>
-          <div>{meUser.isAdmin ? "admin" : ""}</div>
+        <div className="usersList">
           {allUsers.map((user) => {
             return (
-              <div key={user.id}>
+              <div key={user.id} className="userCardContainer">
                 <Link to={`/user/${user.id}`}>
                   <UserCard
                     isAdmin={user.isAdmin}
