@@ -1,3 +1,5 @@
+import "../styles/newCandleForm.css";
+
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -22,22 +24,23 @@ export default function NewCandleForm(props) {
   }
 
   return (
-    <div>
-      <div>
-        <p>Image preview:</p>
-        <img
-          src={candleImageUrl}
-          alt="candle preview"
-          width="200"
-          height="200"
-        ></img>
-      </div>
-      <div>
-        <h2>Add new candle:</h2>
-        <form on onSubmit={submitNewCandle}>
+    <div className="NewCandleForm">
+      <p className="candleFormTitle">Add new candle:</p>
+      <div className="candleFormContainer">
+        <div className="imagePreviewContainer">
+          <img
+            className="previewImage"
+            src={candleImageUrl}
+            alt="candle preview"
+            width="200"
+            height="200"
+          ></img>
+        </div>
+        <form className="formInputs" onSubmit={submitNewCandle}>
           <div>
             Candle name:
             <input
+              className="candleNameInput"
               type="text"
               value={candleName}
               onChange={(e) => {
@@ -46,8 +49,9 @@ export default function NewCandleForm(props) {
             />
           </div>
           <div>
-            <p>Candle description:</p>
+            <p className="candleDesc">Candle description:</p>
             <textarea
+              className="candleDescInput"
               value={candleDescription}
               onChange={(e) => {
                 setCandleDescription(e.target.value);
@@ -57,6 +61,7 @@ export default function NewCandleForm(props) {
           <div>
             Candle image URL:
             <input
+              className="imageUrlInput"
               type="text"
               value={candleImageUrl}
               onChange={(e) => {
@@ -70,7 +75,9 @@ export default function NewCandleForm(props) {
           {candleName !== "" &&
           candleDescription !== "" &&
           candleImageUrl !== "" ? (
-            <button type="submit">Add it!</button>
+            <button className="submitButton" type="submit">
+              Add it!
+            </button>
           ) : (
             ""
           )}

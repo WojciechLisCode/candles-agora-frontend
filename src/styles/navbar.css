@@ -1,10 +1,11 @@
 .Navbar {
-  background-color: wheat;
+  background-image: url("../misc/gold.jpg");
+  background-size: cover;
   height: 90px;
   display: flex;
   flex-direction: column;
-  border: 2px black solid;
-  margin: 5px;
+  margin: 0;
+  margin-bottom: 0;
   justify-content: center;
   min-width: 900px;
   position: sticky;

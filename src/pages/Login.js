@@ -1,3 +1,5 @@
+import "../styles/login.css";
+
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
@@ -27,35 +29,42 @@ export default function Login() {
     setPassword("");
   }
   return (
-    <div>
-      <h2>Login Page</h2>
+    <div className="Login">
+      <div className="buttonsBar"></div>
+      <h2>Login page</h2>
       <form onSubmit={submitForm}>
-        <p>
-          email:
+        <div className="input">
+          <p className="inputDesc">Email:</p>
           <input
+            className="inputField"
             type="text"
             value={email}
             onChange={(e) => {
               setEmail(e.target.value);
             }}
           ></input>
-        </p>
-        <p>
-          Password:
+        </div>
+        <div className="input">
+          <p className="inputDesc">Password:</p>
           <input
+            className="inputField"
             type="passord"
             value={password}
             onChange={(e) => {
               setPassword(e.target.value);
             }}
           ></input>
-        </p>
-        <button type="submit">Login</button>
+        </div>
+        <button className="userButton" type="submit">
+          Login
+        </button>
       </form>
       <div>
         <p>or</p>
         <p>
-          <Link to="/signup">Create new user</Link>
+          <Link to="/signup">
+            <button className="userButton">Create new user</button>
+          </Link>
         </p>
       </div>
     </div>

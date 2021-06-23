@@ -1,3 +1,5 @@
+import "../styles/candleDetails.css";
+
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -5,9 +7,10 @@ import { Link } from "react-router-dom";
 
 import { fetchCandleById } from "../store/actions/candleDetails";
 import { selectCandleDetails } from "../store/selectors/candleDetails";
+import { selectMeUser } from "../store/selectors/meUser";
+import { deleteCandle } from "../store/actions/allCandles";
 
 import NewConnectionForm from "../components/NewConnectionForm";
-import { selectMeUser } from "../store/selectors/meUser";
 
 export default function CandleDetails() {
   const { id } = useParams();
@@ -19,6 +22,10 @@ export default function CandleDetails() {
   const candleDetails = useSelector(selectCandleDetails);
   const meUser = useSelector(selectMeUser);
   let connectionsList = [];
+
+  function deleteButton() {
+    deleteCandle(candleDetails.id);
+  }
 
   useEffect(() => {
     dispatch(fetchCandleById(id));
@@ -48,57 +55,83 @@ export default function CandleDetails() {
   }
   if (candleDetails !== null) {
     return (
-      <div>
-        <div>
-          <h2>{candleDetails.name}</h2>
-          <p>{candleDetails.description}</p>
-        </div>
-        <div>
-          <div>
-            <img src={candleDetails.imageUrl} alt={candleDetails.name}></img>
+      <div className="CandleDetails">
+        {meUser.isAdmin ? (
+          <div className="buttonsBar">
+            <button className="userButton" onClick={deleteButton}>
+              Delete this candle
+            </button>
           </div>
-          <div>
-            ralations
-            <select
-              value={connectionsSorting}
-              onChange={(e) => {
-                setConnectionsSorting(e.target.value);
-              }}
-            >
-              <option>I want that candle</option>
-              <option>I have that candle</option>
-              <option>I had that candle </option>
-              <option>I can let it go</option>
-            </select>
-            {connectionsList.map((connection) => {
-              console.log(meUser);
-              return (
-                <div>
-                  <Link to={`/user/${connection.id}`}>
-                    <p>{connection.name}:</p>
-                    {connection.iCanSellCandle ? (
-                      <p>{connection.iCanSellCandle.connectionText}</p>
-                    ) : connection.iDidHaveCandle ? (
-                      <p>{connection.iDidHaveCandle.connectionText}</p>
-                    ) : connection.iHaveCandle ? (
-                      <p>{connection.iHaveCandle.connectionText}</p>
-                    ) : (
-                      <p>{connection.iWantCandle.connectionText}</p>
-                    )}
-                  </Link>
-                </div>
-              );
-            })}
+        ) : (
+          <div className="buttonsBar"></div>
+        )}
+        <div className="candleData">
+          <div className="candleDescription">
+            <img
+              className="candleImage"
+              src={candleDetails.imageUrl}
+              alt={candleDetails.name}
+            ></img>
+            <h2>{candleDetails.name}</h2>
+            <p>{candleDetails.description}</p>
           </div>
-
-          <div>
-            <p>{message}</p>
-            <NewConnectionForm
-              candleId={candleDetails.id}
-              userId={meUser.id}
-              setMessage={setMessage}
-              setConnectionsSorting={setConnectionsSorting}
-            />
+          <div className="candleRelations">
+            {meUser.token !== null ? (
+              <div className="newConnection">
+                <p>{message}</p>
+                <NewConnectionForm
+                  candleId={candleDetails.id}
+                  userId={meUser.id}
+                  setMessage={setMessage}
+                  setConnectionsSorting={setConnectionsSorting}
+                />
+              </div>
+            ) : (
+              <div></div>
+            )}
+            <div className="existingConnections">
+              <h2>Existing relations:</h2>
+              <select
+                className="existingConnectionsSelector"
+                value={connectionsSorting}
+                onChange={(e) => {
+                  setConnectionsSorting(e.target.value);
+                }}
+              >
+                <option>I want that candle</option>
+                <option>I have that candle</option>
+                <option>I had that candle </option>
+                <option>I can let it go</option>
+              </select>
+              {connectionsList.map((connection) => {
+                return (
+                  <div className="connectionCard">
+                    <Link to={`/user/${connection.id}`}>
+                      <p>
+                        <b>{connection.name}:</b>
+                      </p>
+                      {connection.iCanSellCandle ? (
+                        <p className="connectionDescription">
+                          {connection.iCanSellCandle.connectionText}
+                        </p>
+                      ) : connection.iDidHaveCandle ? (
+                        <p className="connectionDescription">
+                          {connection.iDidHaveCandle.connectionText}
+                        </p>
+                      ) : connection.iHaveCandle ? (
+                        <p className="connectionDescription">
+                          {connection.iHaveCandle.connectionText}
+                        </p>
+                      ) : (
+                        <p className="connectionDescription">
+                          {connection.iWantCandle.connectionText}
+                        </p>
+                      )}
+                    </Link>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>

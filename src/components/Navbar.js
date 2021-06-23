@@ -28,9 +28,13 @@ export default function Navbar() {
             </select>
           </div>
         </div>
-        <Link className="linksItem" to="/user/2">
-          <p>My account</p>
-        </Link>
+        {meUser.token !== null ? (
+          <Link className="linksItem" to={`/user/${meUser.id}`}>
+            <p>My account</p>
+          </Link>
+        ) : (
+          <p className="linksItem"></p>
+        )}
         {meUser.token === null ? (
           <Link className="linksItem" to="/login">
             <p>Login/Signup</p>

@@ -1,3 +1,7 @@
 .App {
   text-align: center;
 }
+a {
+  color: black;
+  text-decoration: none; /* no underline */
+}

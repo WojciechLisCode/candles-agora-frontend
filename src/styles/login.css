@@ -1,0 +1,35 @@
+.Login {
+  min-height: 1000px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(
+    to right,
+    #bf953f,
+    #fcf6ba,
+    #b38728,
+    #fbf5b7,
+    #aa771c
+  );
+}
+.input {
+  display: flex;
+  height: 20px;
+  justify-content: flex-end;
+  margin: 10px;
+}
+.inputDesc {
+  margin: 0;
+}
+.buttonsBar {
+  height: 21px;
+  position: sticky;
+  top: 90px;
+  width: 100%;
+  padding: 5px 0 5px 0;
+  background-color: black;
+}
+.userButton {
+  color: #fbf5b7;
+  background-color: black;
+}
