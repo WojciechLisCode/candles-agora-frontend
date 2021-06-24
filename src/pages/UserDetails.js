@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 
 import { fetchUserById } from "../store/actions/userDetails";
 import { sendMessage } from "../store/actions/allUsers";
+import { toggleAdmin } from "../store/actions/allUsers";
 import { selectUserDetails } from "../store/selectors/userDetails";
 import { selectMeUser } from "../store/selectors/meUser";
 
@@ -17,6 +18,7 @@ export default function UserDetails() {
   const dispatch = useDispatch();
 
   const [messageText, setMessageText] = useState("");
+  const [messageTop, setMessageTop] = useState("");
   const [confirmationText, setConfirmationText] = useState("");
   const [messageFormDisplay, setMessageFormDisplay] = useState(false);
   const [connectionsSorting, setConnectionsSorting] =
@@ -27,7 +29,15 @@ export default function UserDetails() {
 
   useEffect(() => {
     dispatch(fetchUserById(id));
-  }, [dispatch, id, connectionsSorting]);
+  }, [dispatch, id, connectionsSorting, messageTop]);
+
+  function adminButton() {
+    dispatch(toggleAdmin(userDetails.id));
+    setMessageTop("Admin status changed");
+    setTimeout(() => {
+      setMessageTop("");
+    }, 1500);
+  }
 
   function messageFormSubmit(event) {
     event.preventDefault();
@@ -61,12 +71,15 @@ export default function UserDetails() {
       <div className="UserDetails">
         {meUser.isAdmin && meUser.id !== userDetails.id ? (
           <div className="buttonsBar">
-            <button className="userButton">Toggle "Admin" status</button>
+            <button className="userButton" onClick={adminButton}>
+              Toggle "Admin" status
+            </button>
             <button className="userButton">Toggle "Blocked" status</button>
           </div>
         ) : (
           <div className="buttonsBar"></div>
         )}
+        <div>{messageTop}</div>
         <div className="userData">
           <h1>{userDetails.name}</h1>
           <p className="userDetailsStatus">

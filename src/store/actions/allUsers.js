@@ -12,13 +12,11 @@ export const fetchAllUsers = (searchInput) => {
     const response = await axios.get(
       `${apiUrl}/users?searchInput=${searchInput}`
     );
-    console.log(response.data.users.rows);
     dispatch(fetchUsersSuccess(response.data.users.rows));
   };
 };
 
 export const sendMessage = (message, senderName, senderId, reciverMail) => {
-  console.log(senderName);
   return async (dispatch, getState) => {
     await axios.post(`${apiUrl}/users/send`, {
       message,
@@ -26,5 +24,12 @@ export const sendMessage = (message, senderName, senderId, reciverMail) => {
       senderId,
       reciverMail,
     });
+  };
+};
+
+export const toggleAdmin = (id) => {
+  return async (dispatch, getState) => {
+    console.log(id);
+    await axios.patch(`${apiUrl}/users/isAdmin/${id}`);
   };
 };
