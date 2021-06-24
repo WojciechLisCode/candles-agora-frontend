@@ -2,7 +2,7 @@ import axios from "axios";
 
 import { selectToken } from "../selectors/meUser";
 
-const apiUrl = process.env.API_URL || "http://localhost:4000";
+const apiUrl = "https://candles-agora.herokuapp.com/";
 
 export const newCandleIdUpdate = (newCandleId) => ({
   type: "meUser/newCandleId",

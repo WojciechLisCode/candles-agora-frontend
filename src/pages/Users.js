@@ -5,11 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect, useState } from "react";
 
 import { selectAllUsers } from "../store/selectors/allUsers";
-import { selectMeUser } from "../store/selectors/meUser";
 import { fetchAllUsers } from "../store/actions/allUsers";
 
-import CandleCard from "../components/CandleCard";
-import NewCandleForm from "../components/NewCandleForm";
 import UserCard from "../components/UserCard";
 
 export default function Users() {
@@ -18,7 +15,6 @@ export default function Users() {
   const [searchInput, setSearchInput] = useState("");
   const [sortingMethod, setSortingMethod] = useState("alphebetical ▲");
   const allUsers = useSelector(selectAllUsers);
-  const meUser = useSelector(selectMeUser);
 
   useEffect(() => {
     dispatch(fetchAllUsers(searchInput));

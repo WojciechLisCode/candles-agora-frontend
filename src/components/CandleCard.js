@@ -1,8 +1,6 @@
 import "../styles/candleCard.css";
 
 import React from "react";
-import { NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
 
 export default function CandleCard(props) {
   return (

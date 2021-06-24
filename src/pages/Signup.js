@@ -2,7 +2,7 @@ import "../styles/signup.css";
 
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import { signup } from "../store/actions/meUser";
 import { selectToken } from "../store/selectors/meUser";

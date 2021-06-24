@@ -3,7 +3,6 @@ import "../styles/userDetails.css";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
 
 import { fetchUserById } from "../store/actions/userDetails";
 import { sendMessage } from "../store/actions/allUsers";

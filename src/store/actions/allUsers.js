@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const apiUrl = process.env.API_URL || "http://localhost:4000";
+const apiUrl = "https://candles-agora.herokuapp.com/";
 
 export const fetchUsersSuccess = (usersArray) => ({
   type: "users/fetch",

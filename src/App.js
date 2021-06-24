@@ -13,7 +13,7 @@ import { getUserWithStoredToken } from "./store/actions/meUser";
 
 import { Switch, Route } from "react-router-dom";
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 function App() {
   const dispatch = useDispatch();

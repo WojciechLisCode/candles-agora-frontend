@@ -1,14 +1,12 @@
 import "../styles/newConnectionForm.css";
 
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+
 import { useDispatch } from "react-redux";
 import { addNewConnection } from "../store/actions/candleDetails";
-import { fetchCandleById } from "../store/actions/candleDetails";
 
 export default function NewConnectionForm(props) {
   const dispatch = useDispatch();
-  const history = useHistory();
 
   const [connectionType, setConnectionType] = useState("iWantCandle");
   const [connectionText, setConnectionText] = useState("");

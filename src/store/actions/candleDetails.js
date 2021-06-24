@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const apiUrl = process.env.API_URL || "http://localhost:4000";
+const apiUrl = "https://candles-agora.herokuapp.com/";
 
 export const fetchCandleSuccess = (candleDetails) => ({
   type: "candle/fetch",
@@ -16,7 +16,7 @@ export const fetchCandleById = (id) => {
 
 export const deleteCandle = (id) => {
   return async (dispatch, getState) => {
-    const response = await axios.delete(`${apiUrl}/candles/${id}`);
+    await axios.delete(`${apiUrl}/candles/${id}`);
   };
 };
 
