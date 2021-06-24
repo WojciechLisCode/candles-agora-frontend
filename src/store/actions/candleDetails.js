@@ -14,6 +14,12 @@ export const fetchCandleById = (id) => {
   };
 };
 
+export const deleteCandle = (id) => {
+  return async (dispatch, getState) => {
+    const response = await axios.delete(`${apiUrl}/candles/${id}`);
+  };
+};
+
 export const addNewConnection = (
   connectionType,
   connectionText,
