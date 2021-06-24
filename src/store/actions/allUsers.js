@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const apiUrl = "https://candles-agora.herokuapp.com/";
+const apiUrl = "https://candles-agora.herokuapp.com";
 
 export const fetchUsersSuccess = (usersArray) => ({
   type: "users/fetch",

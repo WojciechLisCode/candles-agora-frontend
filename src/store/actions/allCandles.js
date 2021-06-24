@@ -1,7 +1,7 @@
 import axios from "axios";
 import { newCandleIdUpdate } from "../actions/meUser";
 
-const apiUrl = "https://candles-agora.herokuapp.com/";
+const apiUrl = "https://candles-agora.herokuapp.com";
 
 export const fetchCandlesSuccess = (candlesArray) => ({
   type: "candles/fetch",

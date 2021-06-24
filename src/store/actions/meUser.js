@@ -2,7 +2,7 @@ import axios from "axios";
 
 import { selectToken } from "../selectors/meUser";
 
-const apiUrl = "https://candles-agora.herokuapp.com/";
+const apiUrl = "https://candles-agora.herokuapp.com";
 
 export const newCandleIdUpdate = (newCandleId) => ({
   type: "meUser/newCandleId",
