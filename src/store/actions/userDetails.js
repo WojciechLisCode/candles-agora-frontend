@@ -13,3 +13,12 @@ export const fetchUserById = (id) => {
     dispatch(fetchUserSuccess(response.data.userDetails));
   };
 };
+
+export const deleteConnection = (connectionType, connectionId) => {
+  return async (dispatch, getState) => {
+    const response = await axios.delete(
+      `${apiUrl}/candles/deleteConnection/${connectionType}/${connectionId}`
+    );
+    console.log(response);
+  };
+};

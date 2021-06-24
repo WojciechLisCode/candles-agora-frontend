@@ -10,7 +10,7 @@ import { sendMessage } from "../store/actions/allUsers";
 import { selectUserDetails } from "../store/selectors/userDetails";
 import { selectMeUser } from "../store/selectors/meUser";
 
-import UserConnectionCard from "../components/userConnectionCard";
+import UserConnectionCard from "../components/UserConnectionCard";
 
 export default function UserDetails() {
   const { id } = useParams();
@@ -131,6 +131,7 @@ export default function UserDetails() {
         </div>
         <div className="userConnectionsList">
           {connectionsList.map((connection) => {
+            console.log(connection);
             return (
               <div key={connection.id}>
                 <UserConnectionCard
@@ -146,6 +147,17 @@ export default function UserDetails() {
                   }
                   candleId={connection.id}
                   imageUrl={connection.imageUrl}
+                  connectionId={connection.id}
+                  userId={userDetails.id}
+                  connectionType={
+                    connectionsSorting === "I want that candle"
+                      ? "iWantCandle"
+                      : connectionsSorting === "I have that candle"
+                      ? "iHaveCandle"
+                      : connectionsSorting === "I had that candle"
+                      ? "iDidHaveCandle"
+                      : "iCanSellCandle"
+                  }
                 />
               </div>
             );
