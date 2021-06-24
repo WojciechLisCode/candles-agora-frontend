@@ -2,18 +2,18 @@ import "../styles/candleDetails.css";
 
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { useHistory, Link, useParams } from "react-router-dom";
 
 import { fetchCandleById } from "../store/actions/candleDetails";
 import { selectCandleDetails } from "../store/selectors/candleDetails";
 import { selectMeUser } from "../store/selectors/meUser";
-import { deleteCandle } from "../store/actions/allCandles";
+import { deleteCandle } from "../store/actions/candleDetails";
 
 import NewConnectionForm from "../components/NewConnectionForm";
 
 export default function CandleDetails() {
   const { id } = useParams();
+  const history = useHistory();
   const dispatch = useDispatch();
   const [message, setMessage] = useState("");
 
@@ -24,7 +24,11 @@ export default function CandleDetails() {
   let connectionsList = [];
 
   function deleteButton() {
-    deleteCandle(candleDetails.id);
+    console.log(candleDetails.id);
+    dispatch(deleteCandle(candleDetails.id));
+    setTimeout(() => {
+      history.push("/");
+    }, 500);
   }
 
   useEffect(() => {

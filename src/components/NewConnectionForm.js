@@ -36,6 +36,9 @@ export default function NewConnectionForm(props) {
         : "I can let it go"
     );
     props.setMessage("Your connection was added");
+    setTimeout(() => {
+      props.setMessage("");
+    }, 1500);
   }
 
   return (
