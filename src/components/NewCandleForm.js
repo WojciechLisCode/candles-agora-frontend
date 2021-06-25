@@ -11,15 +11,20 @@ export default function NewCandleForm(props) {
   const [candleName, setCandleName] = useState("");
 
   const [candleDescription, setCandleDescription] = useState("");
-  const [candleImageUrl, setCandleImageUrl] = useState("");
+  const [candleUrlPreview, setCandleUrlPreview] = useState("");
 
   function submitNewCandle(event) {
     event.preventDefault();
-    dispatch(addNewCandle(candleName, candleDescription, candleImageUrl));
+    dispatch(
+      addNewCandle(
+        candleName,
+        candleDescription,
+        "https://drive.google.com/uc?id=" + candleUrlPreview.split("/")[5]
+      )
+    );
     setCandleName("");
     setCandleDescription("");
-    setCandleImageUrl("");
-
+    setCandleUrlPreview("");
     history.push(`/ncl`);
   }
 
@@ -30,7 +35,9 @@ export default function NewCandleForm(props) {
         <div className="imagePreviewContainer">
           <img
             className="previewImage"
-            src={candleImageUrl}
+            src={
+              "https://drive.google.com/uc?id=" + candleUrlPreview.split("/")[5]
+            }
             alt="candle preview"
             width="200"
             height="200"
@@ -63,18 +70,15 @@ export default function NewCandleForm(props) {
             <input
               className="imageUrlInput"
               type="text"
-              value={candleImageUrl}
+              value={candleUrlPreview}
               onChange={(e) => {
-                setCandleImageUrl(
-                  "https://drive.google.com/uc?id=" +
-                    e.target.value.split("/")[5]
-                );
+                setCandleUrlPreview(e.target.value);
               }}
             />
           </div>
           {candleName !== "" &&
           candleDescription !== "" &&
-          candleImageUrl !== "" ? (
+          candleUrlPreview !== "" ? (
             <button className="submitButton" type="submit">
               Add it!
             </button>

@@ -24,7 +24,6 @@ export default function CandleDetails() {
   let connectionsList = [];
 
   function deleteButton() {
-    console.log(candleDetails.id);
     dispatch(deleteCandle(candleDetails.id));
     setTimeout(() => {
       history.push("/");
@@ -35,11 +34,8 @@ export default function CandleDetails() {
     dispatch(fetchCandleById(id));
   }, [dispatch, id, message, connectionsSorting]);
 
-  console.log(connectionsSorting);
-
   if (connectionsSorting === "I want that candle" && candleDetails !== null) {
     connectionsList = candleDetails.wants;
-    console.log(connectionsList);
   } else if (
     connectionsSorting === "I have that candle" &&
     candleDetails !== null
@@ -109,7 +105,7 @@ export default function CandleDetails() {
               </select>
               {connectionsList.map((connection) => {
                 return (
-                  <div className="connectionCard">
+                  <div className="connectionCard" key={connection.id}>
                     <Link to={`/user/${connection.id}`}>
                       <p>
                         <b>{connection.name}:</b>

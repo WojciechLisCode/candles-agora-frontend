@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   width: 750px;
-  height: 250px;
+  height: 300px;
   max-width: 750px;
   border: 5px black solid;
 }
@@ -17,6 +17,8 @@
   flex: 1;
   border: 5px black solid;
   margin: 0 5px 0 5px;
+  max-width: 200px;
+  max-height: 200px;
 }
 .formInputs {
   flex: 2;
@@ -24,8 +26,8 @@
   flex-direction: column;
 }
 .previewImage {
-  min-width: 200px;
-  min-height: 200px;
+  max-width: 200px;
+  max-height: 200px;
 }
 .candleNameInput {
   width: 365px;

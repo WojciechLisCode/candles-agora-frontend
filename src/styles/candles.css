@@ -28,6 +28,8 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  align-items: flex-start;
+  min-height: 850px;
 }
 .sortingInput {
   margin-left: 10px;

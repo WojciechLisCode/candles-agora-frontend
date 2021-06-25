@@ -20,7 +20,7 @@ export default function Navbar() {
           <p>Users</p>
         </Link>
         <div className="logoAndSelector">
-          <span className="logo">CANDLES AGORA</span>
+          <span className="logo">Candles Agora</span>
           <div className="langSel">
             <p className="langSelTitle">Choose language:</p>
             <select>

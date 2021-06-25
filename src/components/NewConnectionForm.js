@@ -42,7 +42,7 @@ export default function NewConnectionForm(props) {
   return (
     <div className="NewConnectionForm">
       <p>Add your relation</p>
-      <form on onSubmit={submitNewConnection}>
+      <form onSubmit={submitNewConnection}>
         <div>
           <select
             value={connectionType}

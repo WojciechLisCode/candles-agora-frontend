@@ -7,7 +7,6 @@ export default function NewCandleLoader() {
   const history = useHistory();
   const meUser = useSelector(selectMeUser);
   const id = meUser.newCandleId;
-  console.log(id);
   if (id !== null) {
     history.push(`/candle/${id}`);
   } else {
