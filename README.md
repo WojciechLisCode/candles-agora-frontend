@@ -1,7 +1,7 @@
 
 # <p align="center"> Candles Agora </p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+https://github.com/WojciechLisCode/candles-agora-frontend/blob/development/Peek%202021-06-28%2008-39.gif
 
 ## Available Scripts
 
