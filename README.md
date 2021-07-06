@@ -26,8 +26,12 @@ Candles Agoara is made for scented candles lovers. It contains a database of can
 
 4. ### User details page.
 
-<p>The user details page displays the user name and his relations with candles. Relations can be sorted by relation type. Each displayed relation serves as a link to the candle details page.</p>
+<p>The user details page displays the user name and his relations with candles. Relations can be sorted by relation type. Each displayed relation serves as a link to the candle details page. If visiting user is logged in, he can send a direct email message to the user via the displayed form.</p>
 
 5. ### Login page.
 
 <p>The login page allows users to log in if the related account exists. If users choose so, they can move to the sign-up page to create an account</p>
+
+6. ### Signup page.
+
+<p>The Signup page allows users to create a new account. After doing so, the user is automatically logged in. </p>
