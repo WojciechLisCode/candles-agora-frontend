@@ -1,6 +1,6 @@
 
 # <p align="center"> Candles Agora </p>
-<p align="center"> This is a frontend repository. The backend repository can be found ![here](https://github.com/WojciechLisCode/candles-agora-backend) </p>
+This is a frontend repository. The backend repository can be found ![here](https://github.com/WojciechLisCode/candles-agora-backend)
 
 
 ![Candles Agora](https://github.com/WojciechLisCode/candles-agora-frontend/blob/development/Peek%202021-06-28%2008-39.gif)
