@@ -35,3 +35,13 @@ Candles Agoara is made for scented candles lovers. It contains a database of can
 6. ### Signup page.
 
 <p>The Signup page allows users to create a new account. After doing so, the user is automatically logged in. </p>
+
+## <p align="center"> To be implented: </p>
+
+1. ### More visible links:
+
+<p>Some of the links don't appear to be interactive. That needs to be improved to be more intuitive.</p>
+
+2. ### Localization of static elements:
+
+<p>Static elements should be displayed in the selected language. This will be implemented by use of <b>i18n</b> or <b>i18next</b> library.</p>
