@@ -45,3 +45,7 @@ Candles Agoara is made for scented candles lovers. It contains a database of can
 2. ### Localization of static elements:
 
 <p>Static elements should be displayed in the selected language. This will be implemented by use of <b>i18n</b> or <b>i18next</b> library.</p>
+
+3. ### Translation of users input(relations and descriptions):
+
+<p>Text coming from users' input should be also translated to the selected language. This will be <i>probably</i> implemented by use of <b>Google cloud translation service</b>. Some extra research needs to be done.</p>
