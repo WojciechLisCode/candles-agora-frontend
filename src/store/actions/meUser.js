@@ -29,7 +29,6 @@ export const login = (email, password) => {
       password,
     });
     dispatch(loginSuccess(response.data));
-    console.log(response.data);
   };
 };
 

@@ -17,7 +17,6 @@ export default function reducer(state = initialState, action) {
       return { ...initialState, token: null };
     case "meUser/loginSuccess":
       localStorage.setItem("token", action.payload.token);
-      console.log(action.payload);
       return { ...state, ...action.payload };
     case "meUser/newCandleId":
       return { ...state, newCandleId: action.payload };

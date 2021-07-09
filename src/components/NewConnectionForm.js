@@ -13,7 +13,6 @@ export default function NewConnectionForm(props) {
 
   function submitNewConnection(event) {
     event.preventDefault();
-    console.log("type: ", connectionType, " text: ", connectionText);
     dispatch(
       addNewConnection(
         connectionType,
