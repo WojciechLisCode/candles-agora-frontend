@@ -17,12 +17,18 @@ export const fetchAllCandles = (searchInput) => {
   };
 };
 
-export const addNewCandle = (candleName, candleDescription, candleImageUrl) => {
+export const addNewCandle = (
+  candleName,
+  candleDescription,
+  candleImageUrl,
+  brandid
+) => {
   return async (dispatch, getState) => {
     let response = await axios.post(`${apiUrl}/candles/newCandle`, {
       candleName,
       candleDescription,
       candleImageUrl,
+      brandid,
     });
 
     dispatch(newCandleIdUpdate(response.data.newCandleId));

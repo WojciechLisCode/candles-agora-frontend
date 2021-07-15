@@ -19,7 +19,8 @@ export default function NewCandleForm(props) {
       addNewCandle(
         candleName,
         candleDescription,
-        "https://drive.google.com/uc?id=" + candleUrlPreview.split("/")[5]
+        "https://drive.google.com/uc?id=" + candleUrlPreview.split("/")[5],
+        1
       )
     );
     setCandleName("");
