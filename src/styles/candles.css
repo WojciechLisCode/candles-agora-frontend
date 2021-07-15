@@ -11,14 +11,6 @@
     #aa771c
   );
 }
-.searchAndSort {
-  color: #fbf5b7;
-  position: sticky;
-  top: 90px;
-  width: 100%;
-  padding: 5px 0 5px 0;
-  background-color: black;
-}
 .componentContainer {
   margin: 10px;
   min-width: 750px;

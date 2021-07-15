@@ -39,6 +39,11 @@ export default function NewCandleForm(props) {
             src={
               "https://drive.google.com/uc?id=" + candleUrlPreview.split("/")[5]
             }
+            onError={(e) => {
+              e.target.onerror = null;
+              e.target.src =
+                "https://drive.google.com/uc?id=1d0WesMeaQqF-zfrQ0f0NVQgQnBisXZiU";
+            }}
             alt="candle preview"
             width="200"
             height="200"
