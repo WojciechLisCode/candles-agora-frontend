@@ -12,7 +12,7 @@ Candles Agoara is made for scented candles lovers. It contains a database of can
 ## <p align="center"> Initial Wire Frame</p>
 <p align="center">App is still in development state so UI is evolving with it.</p>
 
-![Initial Wire Frame](https://github.com/WojciechLisCode/candles-agora-backend/blob/development/DB3.jpg)
+![Initial Wire Frame](https://github.com/WojciechLisCode/candles-agora-frontend/blob/development/wireframe.jpg)
 
 ## <p align="center"> App features/User stories: </p>
 
