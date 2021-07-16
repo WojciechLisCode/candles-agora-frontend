@@ -9,6 +9,11 @@ This is a frontend repository. The backend repository can be found [here](https:
 
 Candles Agoara is made for scented candles lovers. It contains a database of candles (currently limited to Yankee Candles™) and helps with the exchange of candles or opinions about them.
 
+## <p align="center"> Initial Wire Frame</p>
+<p align="center">App is still in development state so UI is evolving with it.</p>
+
+![Initial Wire Frame](https://github.com/WojciechLisCode/candles-agora-backend/blob/development/DB3.jpg)
+
 ## <p align="center"> App features/User stories: </p>
 
 1. ### Landing page.
@@ -36,6 +41,12 @@ Candles Agoara is made for scented candles lovers. It contains a database of can
 
 <p>The Signup page allows users to create a new account. After doing so, the user is automatically logged in. </p>
 
+## <p align="center"> Implemented improvements: </p>
+
+1. ### Candles table improvements:
+
+<p>Initial candles table was updated. Description type was changed from String to Text to avoid the characters limit. Atribute of brand id was added to allow later expansion with more brands of candles. </p>
+
 ## <p align="center"> To be implented: </p>
 
 1. ### More visible links:
@@ -49,3 +60,11 @@ Candles Agoara is made for scented candles lovers. It contains a database of can
 3. ### Translation of users input(relations and descriptions):
 
 <p>Text coming from users' input should be also translated to the selected language. This will be <i>probably</i> implemented by use of <b>Google cloud translation service</b>. Some extra research needs to be done.</p>
+
+4. ### Password remainder:
+
+<p>In case of forgotten password or mistake during sign up. The user should be able to receive his password via e-mail.</p>
+
+5. ### Expansions to other candles brands:
+
+<p>Website is currently limited to only one brand of candles. This is an obvious limitation that needs to be dealt with when other improvements will be implemented. 
