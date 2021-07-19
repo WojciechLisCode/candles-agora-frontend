@@ -1,19 +1,17 @@
-import "../styles/candleCard.css";
-
 import React from "react";
 
 export default function CandleCard(props) {
   return (
-    <div className="CandleCard">
-      <div className="imageAndName">
+    <div className="CandleCard flex_column border w350 m50 space_bet">
+      <div className="imageAndName flex">
         <img
-          className="image"
+          className="image border flex1"
           src={props.imageUrl}
           alt={props.name}
           width="175"
           height="175"
         ></img>
-        <div className="candleNumbers">
+        <div className="candleNumbers flex1">
           <p>I want it: {props.wants}</p>
           <p>I have it: {props.have}</p>
           <p>I had it: {props.had}</p>

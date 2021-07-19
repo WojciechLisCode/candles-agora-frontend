@@ -1,5 +1,3 @@
-import "../styles/candles.css";
-
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect, useState } from "react";
@@ -83,8 +81,8 @@ export default function Candles() {
     });
   }
   return (
-    <div className="Candles">
-      <div className="searchAndSort">
+    <div className="Candles flex_column back_grad align_c">
+      <div className="searchAndSort w_full">
         Search by name:
         <input
           className="sortingInput"
@@ -118,10 +116,10 @@ export default function Candles() {
         <div>Loading</div>
       ) : (
         <>
-          <div className="componentContainer">
+          <div className="componentContainer flex">
             {meUser.isAdmin ? <NewCandleForm /> : ""}
           </div>
-          <div className="candlesList">
+          <div className="candlesList flex">
             {allCandles.map((candle) => {
               return (
                 <div key={candle.id}>

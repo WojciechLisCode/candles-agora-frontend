@@ -1,5 +1,3 @@
-import "../styles/userConnectionCard.css";
-
 import React from "react";
 import { useHistory, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -22,11 +20,18 @@ export default function UserConnectionCard(props) {
 
   console.log("type:", connectionType, "id:", connectionId);
   return (
-    <Link className="UserConnectionCard" to={`/candle/${props.candleId}`}>
+    <Link
+      className="UserConnectionCard flex_column border w350 m50 space_bet"
+      to={`/candle/${props.candleId}`}
+    >
       <div>
         <h3>{props.name}</h3>
-        <img className="image" src={props.imageUrl} alt={props.name}></img>
-        <p>{props.text}</p>
+        <img
+          className="image border flex1"
+          src={props.imageUrl}
+          alt={props.name}
+        ></img>
+        <p className="userConnectionDesc">{props.text}</p>
         {meUser.isAdmin || meUser.id === props.userId ? (
           <button className="userButton" onClick={deleteButton}>
             Delete relation

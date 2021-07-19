@@ -1,5 +1,3 @@
-import "../styles/login.css";
-
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
@@ -29,12 +27,12 @@ export default function Login() {
     setPassword("");
   }
   return (
-    <div className="Login">
-      <div className="buttonsBar"></div>
+    <div className="Login flex_column back_grad align_c minh1000">
+      <div className="buttonsBar w_full"></div>
       <h2>Login page</h2>
       <form onSubmit={submitForm}>
-        <div className="input">
-          <p className="inputDesc">Email:</p>
+        <div className="input flex">
+          <p className="inputDesc m0">Email:</p>
           <input
             className="inputField"
             type="text"
@@ -44,8 +42,8 @@ export default function Login() {
             }}
           ></input>
         </div>
-        <div className="input">
-          <p className="inputDesc">Password:</p>
+        <div className="input flex">
+          <p className="inputDesc m0">Password:</p>
           <input
             className="inputField"
             type="passord"

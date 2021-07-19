@@ -1,5 +1,3 @@
-import "../styles/navbar.css";
-
 import React from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,12 +9,12 @@ export default function Navbar() {
   const meUser = useSelector(selectMeUser);
   const dispatch = useDispatch();
   return (
-    <div className="Navbar">
-      <div className="links">
-        <Link className="linksItem" to="/">
+    <div className="Navbar flex_column m0">
+      <div className="links flex">
+        <Link className="linksItem flex_column align_c" to="/">
           <p>Candles</p>
         </Link>
-        <Link className="linksItem" to="/users">
+        <Link className="linksItem flex_column align_c" to="/users">
           <p>Users</p>
         </Link>
         <div className="logoAndSelector">
@@ -29,18 +27,25 @@ export default function Navbar() {
           </div>
         </div>
         {meUser.token !== null ? (
-          <Link className="linksItem" to={`/user/${meUser.id}`}>
+          <Link
+            className="linksItem flex_column align_c"
+            to={`/user/${meUser.id}`}
+          >
             <p>My account</p>
           </Link>
         ) : (
-          <p className="linksItem"></p>
+          <p className="linksItem flex_column align_c"></p>
         )}
         {meUser.token === null ? (
-          <Link className="linksItem" to="/login">
+          <Link className="linksItem flex_column align_c" to="/login">
             <p>Login/Signup</p>
           </Link>
         ) : (
-          <Link className="linksItem" onClick={() => dispatch(logOut())} to="/">
+          <Link
+            className="linksItem flex_column align_c"
+            onClick={() => dispatch(logOut())}
+            to="/"
+          >
             <p>Logout</p>
           </Link>
         )}

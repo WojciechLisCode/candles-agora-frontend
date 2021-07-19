@@ -1,5 +1,3 @@
-import "../styles/userDetails.css";
-
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -67,21 +65,21 @@ export default function UserDetails() {
   console.log(connectionsList);
   if (userDetails !== null) {
     return (
-      <div className="UserDetails">
+      <div className="UserDetails back_grad align_c minh1000">
         {meUser.isAdmin && meUser.id !== userDetails.id ? (
-          <div className="buttonsBar">
+          <div className="buttonsBar w_full">
             <button className="userButton" onClick={adminButton}>
               Toggle "Admin" status
             </button>
             <button className="userButton">Toggle "Blocked" status</button>
           </div>
         ) : (
-          <div className="buttonsBar"></div>
+          <div className="buttonsBar w_full"></div>
         )}
         <div>{messageTop}</div>
-        <div className="userData">
+        <div className="userData back_grad">
           <h1>{userDetails.name}</h1>
-          <p className="userDetailsStatus">
+          <p className="userDetailsStatus m0">
             {userDetails.isAdmin ? "Admin" : " "}
           </p>
           <p>{userDetails.isBlocked ? "BLOCKED!!" : " "}</p>
@@ -141,7 +139,7 @@ export default function UserDetails() {
             </select>
           </div>
         </div>
-        <div className="userConnectionsList">
+        <div className="userConnectionsList flex">
           {connectionsList.map((connection) => {
             console.log(connection);
             return (

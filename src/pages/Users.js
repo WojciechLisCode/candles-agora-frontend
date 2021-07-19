@@ -1,5 +1,3 @@
-import "../styles/users.css";
-
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect, useState } from "react";
@@ -74,8 +72,8 @@ export default function Users() {
     });
   }
   return (
-    <div className="Users">
-      <div className="searchAndSort">
+    <div className="Users flex_column back_grad align_c">
+      <div className="searchAndSort w_full">
         Search by name:
         <input
           className="sortingInput"
@@ -108,7 +106,7 @@ export default function Users() {
       {allUsers === null ? (
         <div>Loading</div>
       ) : (
-        <div className="usersList">
+        <div className="usersList flex">
           {allUsers.map((user) => {
             return (
               <div key={user.id} className="userCardContainer">
