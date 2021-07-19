@@ -1,5 +1,3 @@
-import "../styles/candleDetails.css";
-
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, Link, useParams } from "react-router-dom";
@@ -55,29 +53,29 @@ export default function CandleDetails() {
   }
   if (candleDetails !== null) {
     return (
-      <div className="CandleDetails">
+      <div className="CandleDetails flex_column back_grad align_c minh1000">
         {meUser.isAdmin ? (
-          <div className="buttonsBar">
+          <div className="buttonsBar w_full">
             <button className="userButton" onClick={deleteButton}>
               Delete this candle
             </button>
           </div>
         ) : (
-          <div className="buttonsBar"></div>
+          <div className="buttonsBar w_full"></div>
         )}
-        <div className="candleData">
-          <div className="candleDescription">
+        <div className="candleData flex m0 w_full">
+          <div className="candleDescription m0">
             <img
-              className="candleImage"
+              className="candleImage border"
               src={candleDetails.imageUrl}
               alt={candleDetails.name}
             ></img>
             <h2>{candleDetails.name}</h2>
             <p>{candleDetails.description}</p>
           </div>
-          <div className="candleRelations">
+          <div className="candleRelations flex_column p10 m0 w_full">
             {meUser.token !== null ? (
-              <div className="newConnection">
+              <div className="newConnection border p10">
                 <p>{message}</p>
                 <NewConnectionForm
                   candleId={candleDetails.id}
@@ -89,7 +87,7 @@ export default function CandleDetails() {
             ) : (
               <div></div>
             )}
-            <div className="existingConnections">
+            <div className="existingConnections flex_column p10 align_c">
               <h2>Existing relations:</h2>
               <select
                 className="existingConnectionsSelector"
@@ -105,7 +103,10 @@ export default function CandleDetails() {
               </select>
               {connectionsList.map((connection) => {
                 return (
-                  <div className="connectionCard" key={connection.id}>
+                  <div
+                    className="connectionCard border m50 w_full"
+                    key={connection.id}
+                  >
                     <Link to={`/user/${connection.id}`}>
                       <p>
                         <b>{connection.name}:</b>

@@ -1,5 +1,3 @@
-import "../styles/newCandleForm.css";
-
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -30,10 +28,10 @@ export default function NewCandleForm(props) {
   }
 
   return (
-    <div className="NewCandleForm">
+    <div className="NewCandleForm flex_column border">
       <p className="candleFormTitle">Add new candle:</p>
-      <div className="candleFormContainer">
-        <div className="imagePreviewContainer">
+      <div className="candleFormContainer flex">
+        <div className="imagePreviewContainer border flex1">
           <img
             className="previewImage"
             src={
@@ -49,7 +47,7 @@ export default function NewCandleForm(props) {
             height="200"
           ></img>
         </div>
-        <form className="formInputs" onSubmit={submitNewCandle}>
+        <form className="formInputs flex_column" onSubmit={submitNewCandle}>
           <div>
             Candle name:
             <input
