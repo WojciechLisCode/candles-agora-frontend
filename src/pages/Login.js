@@ -35,7 +35,7 @@ export default function Login() {
           <p className="inputDesc m0">Email:</p>
           <input
             className="inputField"
-            type="text"
+            type="email"
             value={email}
             onChange={(e) => {
               setEmail(e.target.value);
@@ -46,7 +46,7 @@ export default function Login() {
           <p className="inputDesc m0">Password:</p>
           <input
             className="inputField"
-            type="passord"
+            type="password"
             value={password}
             onChange={(e) => {
               setPassword(e.target.value);
